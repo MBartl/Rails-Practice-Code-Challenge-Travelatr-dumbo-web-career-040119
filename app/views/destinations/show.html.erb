@@ -1,0 +1,21 @@
+<h2><%= @destination.name %></h2>
+<br>
+
+<p>Recent Posts:</p>
+<% if @five_posts.length == 0 %>
+  <p>None</p>
+
+
+<% else %>
+  <% @five_posts.each do |post| %>
+  <ul>
+    <li><%= link_to post.title, post %></li>
+  </ul>
+  <% end %>
+  <br>
+  <h4>Featured Post:</h5>
+  <% @feature_post = @destination.posts.max_by {|post| post.likes} %>
+  <h5><%= link_to @feature_post.title, @feature_post %></h6>
+  <br><br>
+  <p>Average Age of Writers: <%= @destination.bloggers.map(&:age).uniq.sum / @destination.bloggers.length %></p>
+<% end %>

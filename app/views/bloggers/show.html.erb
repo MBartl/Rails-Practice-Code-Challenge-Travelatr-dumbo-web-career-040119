@@ -1,0 +1,8 @@
+<h3><%= @blogger.name %></h3>
+<br>
+<p>Likes: <%= @blogger.posts.all.map(&:likes).sum %></p>
+<br>
+<p>Featured Post:<p>
+  <ul>
+    <li><%= link_to @featured_post.title, @featured_post %></li>
+  </ul>
